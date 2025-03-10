@@ -1,4 +1,5 @@
-/*package Birthday;
+package Birthday;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,9 +21,11 @@ CalculateAge(){
     TextField yearTF;
     String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November","December"};
     JFrame myFrame = Display1();}
+   
     TextField getDayF()
     {return dayTF;}
-  public JFrame Display1()
+ 
+ public JFrame Display1()
   {
         JFrame TopFrame = new JFrame();
         TopFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,6 +73,7 @@ CalculateAge(){
                 { bmi = i+1;}
             }
         }
+ 
    @Override
         public void actionPerformed(ActionEvent myEvent) 
         {
@@ -78,16 +82,15 @@ CalculateAge(){
             LocalDate start = LocalDate.of(this.byi, this.bmi, Integer.parseInt(dayTF.getText()));
             LocalDate end = LocalDate.of(local.getYear(), local.getMonthValue(), local.getDayOfMonth());
             long daysBetween = ChronoUnit.DAYS.between(start,end);
-            this.daysAlive = (int) daysBetween;
-            
-            
-    }
+            this.daysAlive = (int) daysBetween;     
+          }
+ 
     JFrame SecondDisplay()
     {
-        JFrame updatedFrame = new JFrame("Display Age");
-        updatedFrame.setLayout(new FlowLayout());
-        updatedFrame.setSize(300,300);
-        TextField displayAgeTF = new TextField("The amount of days you have been alive is : " + Integer.toString(daysAlive));
+      JFrame updatedFrame = new JFrame("Display Age");
+      updatedFrame.setLayout(new FlowLayout());
+      updatedFrame.setSize(300,300);
+      TextField displayAgeTF = new TextField("The amount of days you have been alive is : " + Integer.toString(daysAlive));
     updatedFrame.add(displayAgeTF);
     myFrame.dispose();
     updatedFrame.setVisible(true);
@@ -99,4 +102,4 @@ CalculateAge(){
   new CalculateAge();
     }
 }
-*/
+
