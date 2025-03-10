@@ -1,0 +1,65 @@
+// Class to hold the element
+class DataHolder {
+    private String data;
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+}
+
+// First JFrame
+class Frame1 extends JFrame {
+    private DataHolder dataHolder;
+    private JTextField textField;
+
+    public Frame1(DataHolder dataHolder) {
+        this.dataHolder = dataHolder;
+
+        textField = new JTextField(20);
+        JButton button = new JButton("Open Frame 2");
+        button.addActionListener(e -> {
+            dataHolder.setData(textField.getText());
+            Frame2 frame2 = new Frame2(dataHolder);
+            frame2.setVisible(true);
+        });
+
+        JPanel panel = new JPanel();
+        panel.add(textField);
+        panel.add(button);
+
+        add(panel);
+        pack();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+    }
+}
+
+// Second JFrame
+class Frame2 extends JFrame {
+    private DataHolder dataHolder;
+    private JLabel label;
+
+    public Frame2(DataHolder dataHolder) {
+        this.dataHolder = dataHolder;
+
+        label = new JLabel("Data from Frame 1: " + dataHolder.getData());
+
+        add(label);
+        pack();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        DataHolder dataHolder = new DataHolder();
+        Frame1 frame1 = new Frame1(dataHolder);
+        frame1.setVisible(true);
+    }
+}
